@@ -1,13 +1,10 @@
 package com.practice;
 
-import java.util.*;
-
 public class NextPalindromeDigit {
 
 	public static void main(String[] args) throws java.lang.Exception{
 		long digit = 12321;
 		NextPalindromeDigit myClass = new NextPalindromeDigit();
-		
 		int n = Integer.parseInt(System.console().readLine());
 		System.out.println(" " + n);
 //		boolean result = myClass.checkPalindrome(digit);
