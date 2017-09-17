@@ -1,8 +1,0 @@
-package com.practice;
-
-public class NextPalindromeDigit {
-
-	public static void main(String[] args) {
-		long digit = 12321; 
-	}
-}
