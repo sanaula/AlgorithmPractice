@@ -13,15 +13,14 @@ public class NextPalindromeDigit {
 		if(digit <= 0) return false;
 		String str = String.valueOf(digit);
 		int i = 0, j = str.length() - 1;
-		
 		while(j >= i) {
-			if(str.charAt(i) == str.charAt(j)) {
-				return true;
+			if(str.charAt(i) != str.charAt(j)) {
+				return false;
 			}
 			i++;
 			j--;
 		}
 		
-		return false;
+		return true;
 	}
 }
