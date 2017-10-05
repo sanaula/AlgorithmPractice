@@ -9,7 +9,41 @@ public class BinarySearchTree {
 		bst.insert(12);
 		bst.preorder();
 		System.out.println(bst.search(15) ? "Present" : "Not present");
+		
+		bst.delete(12);
+		bst.preorder();
 	}
+	
+	private void delete(int key) {
+		root = delete(root, key);
+	}
+	private Node delete(Node node, int key) {
+		if(node == null) return node;
+		
+		if(key < node.data)
+			node.left = delete(node.left, key);
+		else if(key > node.data)
+			node.right = delete(node.right, key);
+		else {
+			if(node.left == null) return node.right;
+			else if(node.right == null) return node.left;
+			
+			node.data = min(node.right);
+			node.right = delete(node.right, node.data);
+		}
+		
+		return node;
+	}
+
+	private int min(Node node) {
+		int min = node.data;
+		while(node.left != null) {
+			min = node.left.data;
+			node = node.left;
+		}
+		return min;
+	}
+
 	private boolean search(int key) {
 		return search(root, key) != null;
 	}
