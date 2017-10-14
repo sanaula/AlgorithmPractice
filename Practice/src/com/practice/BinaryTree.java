@@ -10,16 +10,18 @@ public class BinaryTree {
 		 * Constructed binary tree is 10 / \ 8 2 / \ / 3 5 2
 		 */
 		BinaryTree tree = new BinaryTree();
-		tree.root = new Node(10);
-		tree.root.left = new Node(8);
-		tree.root.right = new Node(2);
-		tree.root.left.left = new Node(3);
-		tree.root.left.right = new Node(5);
-		tree.root.right.left = new Node(2);
+		tree.root = new Node(4);
+		tree.root.left = new Node(2);
+		tree.root.right = new Node(5);
+		tree.root.left.left = new Node(1);
+		tree.root.left.right = new Node(3);
+//		tree.root.right.left = new Node(2);
 		int[] path = new int[10];
 		// tree.pathSum(tree.root, path, 0);
 		//tree.printRightSubTree(tree.root, tree.root);
 		tree.printSpiral(tree.root);
+		boolean res = tree.isBst(tree.root);
+		System.out.println(res ? "BST" : "Not Bst");
 	}
 
 	private void printSpiral(Node root) {
@@ -46,6 +48,17 @@ public class BinaryTree {
 					s1.push(temp.left);
 			}
 		}
+	}
+	
+	private boolean isBst(Node node) {
+		if(node == null) return false;
+		if(node.left != null && node.left.data < node.data && 
+				node.right != null && node.right.data > node.data)
+			return true;
+		isBst(node.left);
+		isBst(node.right);
+		
+		return false;
 	}
 
 	private void printRightSubTree(Node node, Node main) {
